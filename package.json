@@ -1,0 +1,24 @@
+{
+  "name": "synoptic-project---group-46",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnP96/Synoptic-Project---Group-46.git"
+  },
+  "author": "John P",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnP96/Synoptic-Project---Group-46/issues"
+  },
+  "homepage": "https://github.com/JohnP96/Synoptic-Project---Group-46#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}
