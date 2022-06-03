@@ -1,5 +1,6 @@
 /*
     Server side javascript
+    Run "npm i" in terminal to install dependancies
 */
 
 let express = require("express");
