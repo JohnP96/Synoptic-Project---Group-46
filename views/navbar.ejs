@@ -2,28 +2,38 @@
     Nav bar that can be included at the top of every page
 -->
 
-<nav class = 'navbar navbar-expand-lg'>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class = 'navbar navbar-expand-lg navbar-dark bg-dark'>
+    <a class = "navbar-brand pull-right" href="/">APPLICATION NAME</a>
+    <div class="navbar-header">
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+        <ul class="navbar-nav">
+            <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Alert Tracking
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Alert tracking
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li></li>
+                    <li><a class="dropdown-item" href="/">All alerts</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/">Maintenance</a></li>
+                    <li><a class="dropdown-item" href="/">Tsunamis</a></li>
+                    <li><a class="dropdown-item" href="/">Tornadoes</a></li>
+                    <li><a class="dropdown-item" href="/">Floods</a></li>
+                    <li><a class="dropdown-item" href="/">Earthquakes</a></li>
+                    <li><a class="dropdown-item" href="/">Wildfires</a></li>
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Alert Map</a>
+                <a class="nav-link" href="/">Alert map</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Report an Alert</a>
+                <a class="nav-link" href="/">Send an alert</a>
             </li>
         </ul>
     </div>

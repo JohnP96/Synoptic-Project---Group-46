@@ -1,3 +1,6 @@
+<!-- 
+    Home page containing links to the other areas and flagging up newly created alerts
+-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,5 +8,45 @@
 </head>
 <body>
     <%- include("navbar") %>
+
+    <!-- This div holds the new alerts and when fully implemented will populate dynamically-->
+    <div id= "new" class="me-1 ms-1"> 
+        <h2>New Alerts:</h2>
+        <button class = "btn btn-lg w-100 btn-danger" href = "/">This is a high priority incident!</button>
+        <br><br>
+        <button class = "btn btn-lg w-100 btn-block btn-warning" href = "/">This is a lower priority incident!</button>
+        <br><br>
+        <button class = "btn btn-lg w-100 btn-block btn-success" href = "/">This is a low priority incident!</button>
+    </div>
+    <br>
+
+    <div id= "report" class="ms-1">
+        <button class = "btn btn-outline-dark">Send an alert</button>
+    </div>
+    <br>
+
+    <div id= "track" class="list-group container">
+        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#trackingOptions" aria-controls="trackingOptions" aria-expanded="false">
+            Track alerts by type
+        </button>
+        <div class="collapse list-group" id="trackingOptions">
+            <a class="list-group-item text-center" href="/">All alerts</a>
+            <a class="list-group-item text-center" href="/">Maintenance</a>
+            <a class="list-group-item text-center" href="/">Tsunamis</a>
+            <a class="list-group-item text-center" href="/">Tornadoes</a>
+            <a class="list-group-item text-center" href="/">Floods</a>
+            <a class="list-group-item text-center" href="/">Earthquakes</a>
+            <a class="list-group-item text-center" href="/">Wildfires</a>
+        </div>
+    </div>
+    <br>
+    <!-- Map link will go here if we finish it
+    <div id = "map" class = "container">
+        <a href="/">
+            <h3 class="h3">Go to Map</h3>
+            <img src="alert.png" class="d-inline-block">
+        </a>
+    </div>
+    -->
 </body>
 </html>
