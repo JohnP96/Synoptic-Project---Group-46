@@ -3,50 +3,141 @@
 -->
 <!doctype html>
 <html lang="en">
+
 <head>
     <%- include("head") %>
 </head>
+
 <body>
     <%- include("navbar") %>
 
-    <!-- This div holds the new alerts and when fully implemented will populate dynamically-->
-    <div id= "new" class="me-1 ms-1"> 
-        <h2>New Alerts:</h2>
-        <button class = "btn btn-lg w-100 btn-danger" href = "/">This is a high priority incident!</button>
-        <br><br>
-        <button class = "btn btn-lg w-100 btn-block btn-warning" href = "/">This is a lower priority incident!</button>
-        <br><br>
-        <button class = "btn btn-lg w-100 btn-block btn-success" href = "/">This is a low priority incident!</button>
-    </div>
-    <br>
-
-    <div id= "report" class="ms-1">
-        <button class = "btn btn-outline-dark">Send an alert</button>
-    </div>
-    <br>
-
-    <div id= "track" class="list-group container">
-        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#trackingOptions" aria-controls="trackingOptions" aria-expanded="false">
-            Track alerts by type
-        </button>
-        <div class="collapse list-group" id="trackingOptions">
-            <a class="list-group-item text-center" href="/">All alerts</a>
-            <a class="list-group-item text-center" href="/">Maintenance</a>
-            <a class="list-group-item text-center" href="/">Tsunamis</a>
-            <a class="list-group-item text-center" href="/">Tornadoes</a>
-            <a class="list-group-item text-center" href="/">Floods</a>
-            <a class="list-group-item text-center" href="/">Earthquakes</a>
-            <a class="list-group-item text-center" href="/">Wildfires</a>
+        <!-- This div holds the new alerts and when fully implemented will populate dynamically-->
+        <div id="new" class="me-1 ms-1">
+            <h2>New Alerts:</h2>
+            <button class="btn btn-lg w-100 btn-danger" href="/">This is a high priority incident!</button>
+            <br><br>
+            <button class="btn btn-lg w-100 btn-block btn-warning" href="/">This is a lower priority incident!</button>
+            <br><br>
+            <button class="btn btn-lg w-100 btn-block btn-success" href="/">This is a low priority incident!</button>
         </div>
-    </div>
-    <br>
-    <!-- Map link will go here if we finish it
-    <div id = "map" class = "container">
-        <a href="/">
-            <h3 class="h3">Go to Map</h3>
-            <img src="alert.png" class="d-inline-block">
-        </a>
-    </div>
-    -->
+        <br>
+
+        <div id="report" class="ms-1">
+            <button class="btn btn-outline-dark">Send an alert</button>
+        </div>
+        <br>
+
+        <div id="track" class="list-group container">
+            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#trackingOptions"
+                aria-controls="trackingOptions" aria-expanded="false">
+                Track alerts by type
+            </button>
+            <div class="collapse list-group" id="trackingOptions">
+                <a class="list-group-item text-center" href="/">All alerts</a>
+                <a class="list-group-item text-center" href="/">Maintenance</a>
+                <a class="list-group-item text-center" href="/">Tsunamis</a>
+                <a class="list-group-item text-center" href="/">Tornadoes</a>
+                <a class="list-group-item text-center" href="/">Floods</a>
+                <a class="list-group-item text-center" href="/">Earthquakes</a>
+                <a class="list-group-item text-center" href="/">Wildfires</a>
+            </div>
+        </div>
+        <br>
+
+        <div id="googleMap" style="
+    width:90%; 
+    height:700px; 
+    margin: auto; 
+    border-radius: 15px;
+    "></div>
+
+
+        <!-- <p>Source: https://developers.google.com/maps/documentation/</p> -->
+
+        <script>
+            function myMap() {
+
+                const iconBase = "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
+
+                const AMS = { lat: -15.147127859320193, lng: 143.22374074983898 };
+                const testAlert = { lat: -14.116832749436647, lng: 143.24807364283436 };
+
+                var mapProp = {
+                    center: AMS,
+                    mapTypeId: "satellite",
+                    zoom: 7
+                };
+
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+                map.setTilt(45);
+
+                const mapCapeYorkCoords = [ //not correct coords
+                    { lat: 52.62345745932018, lng: 1.2412015285858007 },
+                    { lat: 52.62290888791095, lng: 1.241298146434336 },
+                    { lat: 52.62304344379866, lng: 1.2451458101671802 },
+                    { lat: 52.62375416803495, lng: 1.2449468910672548 }
+                ];
+
+                new google.maps.Marker({
+                    position: AMS,
+                    map,
+                    title: "Cape York",
+                });
+
+                // Construct the test alert
+                const contentString =
+                    '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    "</div>" +
+                    '<h1 id="firstHeading" class="firstHeading">Test Alert</h1>' +
+                    '<div id="bodyContent">' +
+                    "<p><b>Test Alert</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+                    "sandstone rock formation in the southern part of the " +
+                    "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
+                    "south west of the nearest large town, Alice Springs; 450&#160;km " +
+                    "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
+                    "features of the Uluru - Kata Tjuta National Park. Uluru is " +
+                    "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
+                    "Aboriginal people of the area. It has many springs, waterholes, " +
+                    "rock caves and ancient paintings. Uluru is listed as a World " +
+                    "Heritage Site.</p>" +
+                    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+                    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+                    "(last visited June 22, 2009).</p>" +
+                    "</div>" +
+                    "</div>";
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                });
+
+                const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+                const marker = new google.maps.Marker({
+                    position: testAlert,
+                    map,
+                    title: "TEST ALERT",
+                    icon: image,
+                });
+
+                marker.addListener("click", () => {
+                    infowindow.open({
+                        anchor: marker,
+                        map,
+                        shouldFocus: false,
+                    });
+                });
+
+            }
+            window.myMap = myMap;
+
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDah_zBeLrWFYF0FBHyZHlgOSXl2xRumgY&callback=myMap"
+            defer></script>
+
+        <br>
+
 </body>
+
 </html>
