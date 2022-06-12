@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use ("/", express.static("./app"));
 
 app.get("/", (req, res) => res.render("index"));
+app.get("/send_alert", (req, res) => res.render("send"));
 
 app.listen(1337, (console.log('Server running on local host 1337')));
 

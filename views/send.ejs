@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include("head") %>
+</head>
+
+<body>
+    <%- include("navbar") %>
+
+    <h3>Enter alert details:</h3>
+    <br>
+    <div class="container input-group">
+        <form name="newAlertInfo">
+            <div class="form-group">
+                <label for="type" class="form-label">Select the type of alert:</label>
+                <select class="form-select" name="type">
+                    <option selected>Alert Type</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="tsunami">Tsunami</option>
+                    <option value="flood">Flood</option>
+                    <option value="tornado">Tornado</option>
+                    <option value="earthquake">Earthquake</option>
+                    <option value="fire">Fire</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="level" class="form-label">Select the priority level of the alert:</label>
+                <select class="form-select" name="level">
+                    <option selected>Alert Level</option>
+                    <option value="high">Red alert</option>
+                    <option value="med">Amber alert</option>
+                    <option value="low">Green alert</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="details" class="form-label">Details:</label>
+                <textarea class="form-control" name="details" rows="3"></textarea>
+            </div>
+        </form>
+    </div>
+</body>
