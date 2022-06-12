@@ -20,9 +20,19 @@ app.get("/", (req, res) => res.render("index"));
 
 app.listen(1337, (console.log('Server running on local host 1337')));
 
+
+
 //test function for test api 
 
-const add = (a,b) => a+b;
+const add = (a = 0,b = 0) =>{
+    if (typeof a !== 'number' || typeof b !== 'number'){
+        return 0;
+    }
+    return a+b;
+};
+
 module.exports = {
     add,
 };
+
+// end of test function 
