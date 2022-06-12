@@ -2,12 +2,18 @@
 //
 // it uses:
 // npm i mocha chai nyc
+// mocha - framework
+// chai  - asserts
+// nyc   - coverage info
 //
 // to use:
 // export any function in server.js
 // build a test script in server.spec.js
-// run npm run test 
+// run npm run coverage  
 // any errors will show
+// use CTRL+C to end testing and see coverage data 
+
+// test for all use cases of functions
 
 // const assert = require('assert'); // not used (using chai assert)
 const { expect } = require('chai'); // chai assert
@@ -35,4 +41,6 @@ describe('The add funciton', () => {
         const result = add(2, 'test');
         expect(result).to.be.eq(0);
     })
+
+    //process.exit(1);
 });

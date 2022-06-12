@@ -3,8 +3,6 @@
     Run "npm i" in terminal to install dependancies
 */
 
-// //"echo \"Error: no test specified\" && exit 1", - "package.json changed to mocha test"
-
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
