@@ -66,7 +66,7 @@ app.post('/send-email', function (req, res) {
             return console.log(error);
         }
         console.log('Message %s sent: %s', info.messageId, info.response);
-        res.render('index');
+        res.redirect('/');
     });
 });
 
@@ -111,12 +111,9 @@ app.post("/speed-test", (req, res) => {
                 return console.log(error);
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
-            res.render('index');
+            res.redirect('/');
         });
-        
-
     });
-    res.render("index")
 });
 
 // end of speed test   --------|
