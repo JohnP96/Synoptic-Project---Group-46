@@ -22,9 +22,7 @@ app.use("/", express.static("./app"));
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/send_alert", (req, res) => res.render("send"));
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 app.get("/AT", (req, res) => res.render("AlertTracking"));
 app.get("/AT-M", (req, res) => res.render("AT-Mainenance"));
 app.get("/AT-T", (req, res) => res.render("AT-Tsunamis"));
@@ -33,8 +31,6 @@ app.get("/AT-F", (req, res) => res.render("AT-Floods"));
 app.get("/AT-E", (req, res) => res.render("AT-Earth"));
 app.get("/AT-W", (req, res) => res.render("AT-Wildfires"));
 
-=======
->>>>>>> Stashed changes
 app.get("/map", (req, res) => res.render("map"));
 app.get("/alerts", (req, res) => res.json(getAlerts()));
 
@@ -59,10 +55,7 @@ function getAlerts() { // Returns all alerts in json format
     let alerts = JSON.parse(alertFile);
     return alerts;
 }
-<<<<<<< Updated upstream
-=======
->>>>>>> d6da444f6b4a2169b600e7dabef4c0225d5c690f
->>>>>>> Stashed changes
+
 
 app.listen(1337, (console.log('Server running on local host 1337')));
 
