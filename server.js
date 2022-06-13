@@ -17,6 +17,22 @@ app.use ("/", express.static("./app"));
 app.get("/", (req, res) => res.render("index"));
 app.get("/send_alert", (req, res) => res.render("send"));
 
+//Adds new alert to the alerts file
+app.post("/send_alert", function(req,res){
+    let alertFile = fs.readFileSync("alerts.json");
+    let alerts = JSON.parse(alertFile);
+    let date = new Date(); //Gets the current date and time
+    alerts.push({
+        type:req.body.type,
+        level:req.body.level,
+        details:req.body.details,
+        time:date
+    })
+    console.log(JSON.stringify(alerts));
+    fs.writeFileSync("alerts.json", JSON.stringify(alerts));
+    res.redirect("/");
+});
+
 app.listen(1337, (console.log('Server running on local host 1337')));
 
 

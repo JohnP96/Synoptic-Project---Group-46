@@ -11,7 +11,7 @@
     <h3>Enter alert details:</h3>
     <br>
     <div class="container input-group">
-        <form name="newAlertInfo">
+        <form name="newAlertInfo" method="post">
             <div class="form-group">
                 <label for="type" class="form-label">Select the type of alert:</label>
                 <select class="form-select" name="type">
@@ -39,6 +39,8 @@
                 <label for="details" class="form-label">Details:</label>
                 <textarea class="form-control" name="details" rows="3"></textarea>
             </div>
+            <br>
+            <input type="submit" value="Send" id="sendAlertButton" class="btn btn-primary">
         </form>
     </div>
 </body>
