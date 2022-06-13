@@ -22,6 +22,7 @@ app.use("/", express.static("./app"));
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/send_alert", (req, res) => res.render("send"));
+app.get("/map", (req, res) => res.render("map"));
 app.get("/alerts", (req, res) => res.json(getAlerts()));
 
 //Adds new alert to the alerts file
