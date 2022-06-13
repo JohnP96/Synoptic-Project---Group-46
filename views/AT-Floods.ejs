@@ -1,0 +1,148 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <%- include("head") %>
+</head>
+
+<body>
+    <%- include("navbar") %>
+    
+    <div class="issues text-center">
+        <h2>Alert Tracking: Floods</h2>
+    </div>  
+
+    <div class="issues text-center">
+
+        <!-- issues for the last 30 days -->
+        
+        <div class="last-30-info" id="last-30 ">
+            <h2>Last 30 days</h2>
+            <table class="table table-condesned">
+                <tr>
+                    <th>date</th>
+                    <th>area</th>
+                    <th>issue</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <th>04/05/2022</th>
+                        <th>Cape York</th>
+                        <th>Floods</th>
+                    </tr>
+                    <tr>
+
+                        <th>25/05/2022</th>
+                        <th>Cape York</th>
+                        <th>flooding damage</th>
+                    </tr>
+                    <tr>
+                        <th>02/05/2022</th>
+                        <th>Cape York</th>
+                        <th>heavy rain</th>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+
+        <div class="me- ms-1" id="Previous-issues">
+            <button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop"
+            aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 1</button>
+
+            <div class="collapse issues1" id="issuedrop">
+                <div class="issue-Header" id="issue-repoted">
+                    <h2>Flooding</h2>
+                </div>
+                
+                <p>areas in Cape York has little flooding</p>
+                <div class="Sensor-info">
+                    <h3>Sensor Information</h3>
+                    <table class="table table-condesned"> 
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Severity</th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                            <td>01</td>
+                            <td>Flood</td>
+                            <td>Cape York</td>
+                            <td>Low</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop2"
+            aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 2</button>
+
+            <div class="collapse issues2" id="issuedrop2">
+                <div class="issue-Header" id="issue-repoted">
+                    <h2>Issue: Flooding</h2>
+                </div>
+                
+                <h2>Issues</h2>
+                <p>severe flooding, casuing damage to local areas</p>
+                <div class="Sensor-info">
+                    <h3>Sensor Information</h3>
+                    <table class="table table-condesned"> 
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Severity</th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                            <td>02</td>
+                            <td>Flooding damage</td>
+                            <td>Cape York</td>
+                            <td>high</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop3"
+            aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 3</button>
+
+            <div class="collapse issues3" id="issuedrop3">
+                <div class="issue-Header" id="issue-repoted">
+                    <h2>Issue: Flooding</h2>
+                </div>
+                
+                <p>flooding caused by heavy rain</p>
+
+                <div class="Sensor-info">
+                    <h3>Sensor Information</h3>
+                    <table class="table table-condesned"> 
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Severity</th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                            <td>03</td>
+                            <td>heavy rain</td>
+                            <td>north Cape York</td>
+                            <td>low</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
