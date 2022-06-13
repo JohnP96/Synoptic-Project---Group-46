@@ -20,6 +20,7 @@ app.use("/", express.static("./app"));
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/send_alert", (req, res) => res.render("send"));
+app.get("/alerts", (req, res) => res.json(getAlerts()));
 
 //Adds new alert to the alerts file
 app.post("/send_alert", function(req,res){
@@ -36,6 +37,12 @@ app.post("/send_alert", function(req,res){
     fs.writeFileSync("alerts.json", JSON.stringify(alerts));
     res.redirect("/");
 });
+
+function getAlerts() { // Returns all alerts in json format
+    let alertFile = fs.readFileSync("alerts.json");
+    let alerts = JSON.parse(alertFile);
+    return alerts;
+}
 
 app.listen(1337, (console.log('Server running on local host 1337')));
 

@@ -8,17 +8,18 @@
     <%- include("head") %>
 </head>
 
-<body>
+<body onload="newAlerts()">
     <%- include("navbar") %>
 
         <!-- This div holds the new alerts and when fully implemented will populate dynamically-->
         <div id="new" class="me-1 ms-1">
             <h2>New Alerts:</h2>
-            <button class="btn btn-lg w-100 btn-danger" href="/">This is a high priority incident!</button>
+            <h4 id="noAlerts"></h4>
+            <!--button class="btn btn-lg w-100 btn-danger" href="/">This is a high priority incident!</button>
             <br><br>
             <button class="btn btn-lg w-100 btn-block btn-warning" href="/">This is a lower priority incident!</button>
             <br><br>
-            <button class="btn btn-lg w-100 btn-block btn-success" href="/">This is a low priority incident!</button>
+            <button class="btn btn-lg w-100 btn-block btn-success" href="/">This is a low priority incident!</button-->
         </div>
         <br>
 
