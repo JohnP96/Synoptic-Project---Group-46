@@ -3,6 +3,8 @@
     Run "npm i" in terminal to install dependancies
 */
 
+const { exec } = require("child_process");
+
 var path = require('path')
 var nodeMailer = require('nodemailer')
 
@@ -71,11 +73,57 @@ app.post('/send-email', function (req, res) {
             return console.log(error);
         }
         console.log('Message %s sent: %s', info.messageId, info.response);
-        res.render('index');
+        res.redirect('/');
     });
 });
 
 // end of email functionality   --------|
+
+// start of speed test   --------|
+
+app.post("/speed-test", (req, res) => {
+    console.log("Speed Test Requested")
+    exec("speed-test --json", (err, stdout, stderr) => {
+        if (err || stderr) {
+            console.log(err, stderr)
+        }
+        const result = JSON.parse(stdout);
+        const response = `<center>
+                      <h2>Ping : ${result.ping}</h2>
+                      <h2>Download Speed : ${result.download}</h2>
+                      <h2>Upload Speed : ${result.upload}</h2>
+                      </center>`;
+        console.log(response);
+
+
+        let transporter = nodeMailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: 'hero42069poon@gmail.com',
+                pass: 'salccifdqrmcocaf'
+            }
+        });
+        let mailOptions = {
+            from: '"MAS TEST" <hero42069poon@gmail.com>', // sender address
+            to: 'hero42069poon@gmail.com', // list of receivers
+            subject: 'Bandwidth Test', // Subject line
+            text: 'This is a badwidth test', // plain text body
+            html: response // html body
+        };
+    
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+            res.redirect('/');
+        });
+    });
+});
+
+// end of speed test   --------|
 
 // test function for test api 
 
