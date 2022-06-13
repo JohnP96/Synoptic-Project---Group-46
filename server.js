@@ -3,16 +3,20 @@
     Run "npm i" in terminal to install dependancies
 */
 
+var path = require('path')
+var nodeMailer = require('nodemailer')
+
 const fs = require('fs');
-const bodyParser = require('body-parser');
 
 let express = require("express");
 let app = express();
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended: true}));
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use ("/", express.static("./app"));
+app.use("/", express.static("./app"));
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/send_alert", (req, res) => res.render("send"));
@@ -35,15 +39,44 @@ app.post("/send_alert", function(req,res){
 
 app.listen(1337, (console.log('Server running on local host 1337')));
 
+// start of email functionality --------|
 
+app.post('/send-email', function (req, res) {
+    let transporter = nodeMailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'hero42069poon@gmail.com',
+            pass: 'salccifdqrmcocaf'
+        }
+    });
+    let mailOptions = {
+        from: '"MAS TEST" <hero42069poon@gmail.com>', // sender address
+        to: 'hero42069poon@gmail.com', // list of receivers
+        subject: 'ALERT', // Subject line
+        text: 'THIS IS AN EXAMPLE ALERT', // plain text body
+        html: '<b>Node JS ALERT EXAMPLE</b>' // html body
+    };
 
-//test function for test api 
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+        res.render('index');
+    });
+});
 
-const add = (a = 0,b = 0) =>{
-    if (typeof a !== 'number' || typeof b !== 'number'){
+// end of email functionality   --------|
+
+// test function for test api 
+
+const add = (a = 0, b = 0) => {
+    if (typeof a !== 'number' || typeof b !== 'number') {
         return 0;
     }
-    return a+b;
+    return a + b;
 };
 
 module.exports = {
