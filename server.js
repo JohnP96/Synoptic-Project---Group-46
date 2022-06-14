@@ -39,17 +39,18 @@ app.post("/send_alert", function(req,res){
     let alertFile = fs.readFileSync("alerts.json");
     let alerts = JSON.parse(alertFile);
     let date = new Date(); //Gets the current date and time
-    alerts.push({
+    let alert = {
         id:date.getMilliseconds(),
         type:req.body.type,
         level:req.body.level,
         details:req.body.details,
         date:date,
         coords:req.body.coords
-    })
-    console.log(JSON.stringify(alerts));
+    };
+    alerts.push(alert)
+    //console.log(JSON.stringify(alerts));
     fs.writeFileSync("alerts.json", JSON.stringify(alerts));
-    sendEmail(req.body);
+    sendEmail(alert);
     res.redirect("/");
 });
 
@@ -65,6 +66,7 @@ app.listen(1337, (console.log('Server running on local host 1337')));
 // start of email functionality --------|
 
 function sendEmail(alert) {
+    console.log(alert);
     let transporter = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -76,12 +78,14 @@ function sendEmail(alert) {
     });
     let mailOptions = {
         from: '"MAS TEST" <hero42069poon@gmail.com>', // sender address
-        to: 'hero42069poon@gmail.com', // list of receivers
+        to: 'john.p.p@hotmail.co.uk', // list of receivers
         subject: 'ALERT #' + alert.id, // Subject line
         text: 'Type: ' + alert.type +
             '\nPriority: ' + alert.level + 
             '\nDetails: ' + alert.details, // plain text body
-        html: '<b>Node JS ALERT EXAMPLE</b>' // html body
+        html: '<b>Type: ' + alert.type + '</b><br>' +
+                '<b>Priority: ' + alert.level + '</b>' +
+                '<p>Details: ' + alert.details + '</p>' // html body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
