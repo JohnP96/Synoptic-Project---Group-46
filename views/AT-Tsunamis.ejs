@@ -6,7 +6,7 @@
     <%- include("head") %>
 </head>
 
-<body>
+<body onload="tracking('tsunami')">
     <%- include("navbar") %>
     
     <div class="issues text-center">
@@ -18,29 +18,18 @@
         <!-- issues for the last 30 days -->
         
         <div class="last-30-info" id="last-30 ">
-            <h2>Last 30 days</h2>
+            <h2>Last month</h2>
             <table class="table table-condesned">
                 <tr>
                     <th>date</th>
                     <th>area</th>
                     <th>issue</th>
                 </tr>
-                <tbody>
+                <tbody id="last30Body">
                     <tr>
                         <th>27/05/2022</th>
                         <th>North East Cape York</th>
                         <th>Tsunami</th>
-                    </tr>
-                    <tr>
-
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </tbody>
             </table>

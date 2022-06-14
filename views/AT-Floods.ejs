@@ -6,7 +6,7 @@
     <%- include("head") %>
 </head>
 
-<body>
+<body onload="tracking('flood')">
     <%- include("navbar") %>
     
     <div class="issues text-center">
@@ -25,7 +25,7 @@
                     <th>area</th>
                     <th>issue</th>
                 </tr>
-                <tbody>
+                <tbody id="last30Body">
                     <tr>
                         <th>04/05/2022</th>
                         <th>Cape York</th>

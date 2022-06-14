@@ -50,7 +50,7 @@
                 });
 
                 // Construct the test alert
-                const contentString =
+                let contentString =
                     '<div id="content">' +
                     '<div id="siteNotice">' +
                     "</div>" +
@@ -90,6 +90,53 @@
                         map,
                         shouldFocus: false,
                     });
+                });
+
+                $.ajax({
+                    url: "/alerts",
+                    type: "GET",
+                    success: function(alerts){
+                        if (alerts.length != 0){
+                            for (var alert of alerts){
+                                let coords = alert.coords.split(',');
+                                let latitiude = parseInt(coords[0]);
+                                let longitude = parseInt(coords[1]);
+                                let pos = {lat: latitiude, lng: longitude}
+                                let contentString =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '<h1 id="firstHeading" class="firstHeading">' + alert.type + ' alert</h1>' +
+                                    '<div id="bodyContent">' +
+                                    '<p>' + alert.details + '</p>' +
+                                    '<p>Priority: ' + alert.level + ' </p>' +
+                                    "</div>" +
+                                    "</div>";
+
+                                const infowindow = new google.maps.InfoWindow({
+                                    content: contentString,
+                                });
+
+                                const marker = new google.maps.Marker({
+                                    position: pos,
+                                    map,
+                                    title: alert.type + ' alert',
+                                    icon: image,
+                                });
+
+                                marker.addListener("click", () => {
+                                    infowindow.open({
+                                        anchor: marker,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                });
+                            }
+                        }
+                    },
+                    error: function (xhr,status,err){
+                        alert("Error getting alert data from the server");
+                    }
                 });
 
             }

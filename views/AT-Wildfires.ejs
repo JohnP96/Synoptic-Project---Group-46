@@ -6,7 +6,7 @@
     <%- include("head") %>
 </head>
 
-<body>
+<body onload="tracking('fire')">
     <%- include("navbar") %>
     
     <div class="issues text-center">
@@ -25,22 +25,11 @@
                     <th>area</th>
                     <th>issue</th>
                 </tr>
-                <tbody>
+                <tbody id="last30Body">
                     <tr>
                         <th>15/05/2022</th>
                         <th>Lockhart</th>
                         <th>medium</th>
-                    </tr>
-                    <tr>
-
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </tbody>
             </table>

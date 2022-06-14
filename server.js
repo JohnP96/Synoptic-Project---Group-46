@@ -43,7 +43,8 @@ app.post("/send_alert", function(req,res){
         type:req.body.type,
         level:req.body.level,
         details:req.body.details,
-        time:date
+        date:date,
+        coords:req.body.coords
     })
     console.log(JSON.stringify(alerts));
     fs.writeFileSync("alerts.json", JSON.stringify(alerts));

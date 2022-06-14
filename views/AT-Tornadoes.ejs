@@ -6,7 +6,7 @@
     <%- include("head") %>
 </head>
 
-<body>
+<body onload="tracking('tornado')">
     <%- include("navbar") %>
     
     <div class="issues text-center">
@@ -25,7 +25,7 @@
                     <th>area</th>
                     <th>issue</th>
                 </tr>
-                <tbody>
+                <tbody id="last30Body">
                 
                  
                 </tbody>

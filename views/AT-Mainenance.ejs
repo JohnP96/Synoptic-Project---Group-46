@@ -6,13 +6,13 @@
     <%- include("head") %>
 </head>
 
-<body>
+<body onload="tracking('maintenance')">
     <%- include("navbar") %>
 
     <h2>Maintenance</h2>
         <div class="issues text-center">
 
-        <div class="" id="last-30 ">
+        <div class="" id="last-30">
             <h2>Last 30 days</h2>
             <!-- issues for the last 30 days -->
                 <table class="table table-condesned">
@@ -21,45 +21,13 @@
                         <th>area</th>
                         <th>issue</th>
                     </tr>
-                    <tbody>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                      
+                    <tbody id="last30Body">
                     </tbody>
                 </table>
           
         </div>
 
         <div class="me- ms-1" id="Previous-issues">
-            <button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop"
-            aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 1</button>
-
-            <div class="collapse issues1" id="issuedrop">
-                <h2>Issues</h2>
-                <p>issue details</p>
-            </div>
-
-            <button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop2"
-            aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 2</button>
-
-            <div class="collapse issues2" id="issuedrop2">
-                <h2>Issues</h2>
-                <p>issue details</p>
-            </div>
-
-
-            <button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop3"
-            aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 3</button>
-
-            <div class="collapse issues3" id="issuedrop3">
-                <h2>Issues</h2>
-                <p>issue details</p>`
-            </div>
-
-
         </div>
 
       
