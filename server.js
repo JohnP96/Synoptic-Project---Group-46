@@ -40,6 +40,7 @@ app.post("/send_alert", function(req,res){
     let alerts = JSON.parse(alertFile);
     let date = new Date(); //Gets the current date and time
     alerts.push({
+        id:date.getMilliseconds(),
         type:req.body.type,
         level:req.body.level,
         details:req.body.details,
@@ -48,6 +49,7 @@ app.post("/send_alert", function(req,res){
     })
     console.log(JSON.stringify(alerts));
     fs.writeFileSync("alerts.json", JSON.stringify(alerts));
+    sendEmail(req.body);
     res.redirect("/");
 });
 
@@ -62,7 +64,35 @@ app.listen(1337, (console.log('Server running on local host 1337')));
 
 // start of email functionality --------|
 
-app.post('/send-email', function (req, res) {
+function sendEmail(alert) {
+    let transporter = nodeMailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'hero42069poon@gmail.com',
+            pass: 'salccifdqrmcocaf'
+        }
+    });
+    let mailOptions = {
+        from: '"MAS TEST" <hero42069poon@gmail.com>', // sender address
+        to: 'hero42069poon@gmail.com', // list of receivers
+        subject: 'ALERT #' + alert.id, // Subject line
+        text: 'Type: ' + alert.type +
+            '\nPriority: ' + alert.level + 
+            '\nDetails: ' + alert.details, // plain text body
+        html: '<b>Node JS ALERT EXAMPLE</b>' // html body
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+    });
+}
+
+/*app.post('/send-email', function (req, res) {
     let transporter = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -87,7 +117,7 @@ app.post('/send-email', function (req, res) {
         console.log('Message %s sent: %s', info.messageId, info.response);
         res.redirect('/');
     });
-});
+});*/
 
 // end of email functionality   --------|
 

@@ -106,7 +106,7 @@
                                     '<div id="content">' +
                                     '<div id="siteNotice">' +
                                     "</div>" +
-                                    '<h1 id="firstHeading" class="firstHeading">' + alert.type + ' alert</h1>' +
+                                    '<h1 id="firstHeading" class="firstHeading">Alert #' + alert.id + '</h1>' +
                                     '<div id="bodyContent">' +
                                     '<p>' + alert.details + '</p>' +
                                     '<p>Priority: ' + alert.level + ' </p>' +
@@ -120,7 +120,7 @@
                                 const marker = new google.maps.Marker({
                                     position: pos,
                                     map,
-                                    title: alert.type + ' alert',
+                                    title: 'Alert #' + alert.id,
                                     icon: image,
                                 });
 

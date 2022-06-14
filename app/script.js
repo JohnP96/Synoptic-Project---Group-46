@@ -8,17 +8,36 @@ function newAlerts(){ //Populates the new alerts on the home page
         type: "GET",
         success: function(alerts){
             if (alerts.length != 0){
-                //console.log(alerts);
+                console.log(alerts);
+                let alertLink;
                 let alertAdded = false;
                 const newDiv = document.getElementById("new");
                 const currentDate = new Date();
                 for (var alert of alerts){
+                    //get the link to the correct tracking page
+                    if (alert.type == "maintenance"){
+                        alertLink = "AT-M";
+                    }
+                    if (alert.type == "earthquake"){
+                        alertLink = "AT-E";
+                    }
+                    if (alert.type == "tsunami"){
+                        alertLink = "AT-T";
+                    }
+                    if (alert.type == "tornado"){
+                        alertLink = "AT-TOR";
+                    }
+                    if (alert.type == "flood"){
+                        alertLink = "AT-F";
+                    }
+                    if (alert.type == "fire"){
+                        alertLink = "AT-W";
+                    }
                     let alertDate = new Date(alert.date);
                     if (alertDate == currentDate){
-
                         let alertButton = document.createElement("button");
-                        alertButton.innerHTML = "New " + alert.type + " alert";
-                        alertButton.onclick = "location.href='/'";
+                        alertButton.innerHTML = "Alert #" + alert.id + " - " + alert.type;
+                        alertButton.onclick = "location.href='/'" + alertLink;
                         alertButton.type = "button";
                         alertButton.classList.add("btn");
                         alertButton.classList.add("btn-lg");
@@ -80,17 +99,17 @@ function tracking(type){ //Populates the tracking pages with their respective al
                             newArea.innerHTML = alert.coords;
                             newRow.appendChild(newArea);
                             let newIssue = document.createElement("th");
-                            newIssue.innerHTML = alert.type;
+                            newIssue.innerHTML = alert.details;
                             newRow.appendChild(newIssue);
                         }
                         else{ //This is just copy/pasted from the html with the variables added in
                             previous.innerHTML = previous.innerHTML +
                             '<button class="PI1 btn btn-lg w-100" type="button" data-bs-toggle="collapse" data-bs-target="#issuedrop"' +
-                            'aria-controls="issuedtdrop" aria-expanded="false"> Previous Issue 1</button>' +
+                            'aria-controls="issuedtdrop" aria-expanded="false"> Alert #' + alert.id + '</button>' +
                             '<div class="collapse issues1" id="issuedrop">' +
-                            '<div class="issue-Header" id="issue-repoted">' +
-                            '<h2>Issue:' + type + '</h2>' +
-                            '</div>' +
+                            //'<div class="issue-Header" id="issue-repoted">' +
+                            //'<h2>Issue:' + type + '</h2>' +
+                            //'</div>' +
                             '<p>' + alert.details + '</p>' +
                             '<div class="Sensor-info">' +
                             '<h3>Sensor Information</h3>' +
