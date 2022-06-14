@@ -8,7 +8,7 @@ function newAlerts(){ //Populates the new alerts on the home page
         type: "GET",
         success: function(alerts){
             if (alerts.length != 0){
-                console.log(alerts);
+                //console.log(alerts);
                 let alertLink;
                 let alertAdded = false;
                 const newDiv = document.getElementById("new");
@@ -34,10 +34,12 @@ function newAlerts(){ //Populates the new alerts on the home page
                         alertLink = "AT-W";
                     }
                     let alertDate = new Date(alert.date);
-                    if (alertDate == currentDate){
+                    if (alertDate.toDateString() == currentDate.toDateString()){
+                        alertAdded = true;
                         let alertButton = document.createElement("button");
                         alertButton.innerHTML = "Alert #" + alert.id + " - " + alert.type;
-                        alertButton.onclick = "location.href='/'" + alertLink;
+                        //console.log(alertLink);
+                        alertButton.setAttribute('onclick', "location.href='/" + alertLink + "'");
                         alertButton.type = "button";
                         alertButton.classList.add("btn");
                         alertButton.classList.add("btn-lg");
@@ -59,11 +61,12 @@ function newAlerts(){ //Populates the new alerts on the home page
                     }
                 }
                 if (!alertAdded){
+                    console.log("Alert not added");
                     document.getElementById("noAlerts").innerHTML = "No new alerts";
                 }
             }
             else{
-                //console.log("No alerts to add");
+                console.log("No alerts to add");
                 document.getElementById("noAlerts").innerHTML = "No new alerts";
             }
         },
