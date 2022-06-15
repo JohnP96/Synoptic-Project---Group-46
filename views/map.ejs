@@ -8,7 +8,7 @@
 <body>
     <%- include("navbar") %>
 
-         <div id="googleMap" style="
+        <div id="googleMap" style="
     width:90%; 
     height:700px; 
     margin: auto; 
@@ -95,13 +95,13 @@
                 $.ajax({
                     url: "/alerts",
                     type: "GET",
-                    success: function(alerts){
-                        if (alerts.length != 0){
-                            for (var alert of alerts){
+                    success: function (alerts) {
+                        if (alerts.length != 0) {
+                            for (var alert of alerts) {
                                 let coords = alert.coords.split(',');
                                 let latitiude = parseInt(coords[0]);
                                 let longitude = parseInt(coords[1]);
-                                let pos = {lat: latitiude, lng: longitude}
+                                let pos = { lat: latitiude, lng: longitude }
                                 let contentString =
                                     '<div id="content">' +
                                     '<div id="siteNotice">' +
@@ -134,13 +134,15 @@
                             }
                         }
                     },
-                    error: function (xhr,status,err){
+                    error: function (xhr, status, err) {
                         alert("Error getting alert data from the server");
                     }
                 });
 
             }
             window.myMap = myMap;
+
+            
 
         </script>
 
@@ -149,4 +151,5 @@
 
         <br>
 </body>
+
 </html>

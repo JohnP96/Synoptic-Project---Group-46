@@ -92,8 +92,10 @@ function sendEmail(alert) {
         if (error) {
             return console.log(error);
         }
+    
         console.log('Message %s sent: %s', info.messageId, info.response);
     });
+    
 }
 
 /*app.post('/send-email', function (req, res) {
@@ -173,15 +175,16 @@ app.post("/speed-test", (req, res) => {
 
 // test function for test api 
 
-const add = (a = 0, b = 0) => {
-    if (typeof a !== 'number' || typeof b !== 'number') {
-        return 0;
-    }
-    return a + b;
-};
+// const add = (a = 0, b = 0) => {
+//     if (typeof a !== 'number' || typeof b !== 'number') {
+//         return 0;
+//     }
+//     return a + b;
+// };
 
 module.exports = {
-    add,
+    getAlerts,
+    sendEmail
 };
 
 // end of test function 
